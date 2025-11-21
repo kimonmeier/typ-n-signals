@@ -74,6 +74,7 @@ return {
 			addToTable(result.models, builder.buildSpeedIndicator(evaluatedSignal.isGreen, evaluatedSignal.canIndicateSpeed, evaluatedSignal.indicatedSpeed, evaluatedSignal.displayWarning, evaluatedSignal.displayOccupied, x_offset, y_offset, z_offset))
 		end
 		
+		
 		result.cost = -1
 		result.maintenanceCost = result.cost / 6
 
@@ -81,8 +82,6 @@ return {
 			{
 				type = "LESS",
 				faces = { { { .1, -.1, 0 }, { -.1, -.1, 0 }, { -.1, .1, 0 } , { .1, .1, 0 } } },
-				slopeLow = 0,
-				slopeHigh = 0,
 				optional = true,
 			},
 		}
@@ -112,7 +111,7 @@ return {
 				face = { { -50, -50, 0 }, { 50, -50, 0 }, { 50, 50, 0 }, { -50, 50, 0 } },
 				modes = {
 					{
-						type = "FILL",               
+						type = "FILL",
 						key = "hole.lua"
 					}
 				},
@@ -120,7 +119,7 @@ return {
 				alignmentOffsetMode = "OBJECT",
 				alignmentDirMode = "OBJECT",
 				alignmentOffset = { -2.0, -1.0 },
-			} 
+			}
 		end
 		
 		return result

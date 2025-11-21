@@ -31,47 +31,53 @@ function data()
 			},
 		},
 		runFn = function(settings, modParams)
-			local signals = pRequire('nightfury/signals/main')
+			local betterSignals = pRequire('nightfury/signals/better_signals')
 
-			if not signals then
+			if not betterSignals then
 				return
 			end
-		
-			signals.signals['nighty_type_n_hauptsignal'] = {
+
+			betterSignals.addBlueprint('nighty_type_n_hauptsignal', {
 				type = "main",
 				isAnimated = false,
-			}
+			})
 
-			signals.signals['nighty_type_n_vorsignal'] = {
+			betterSignals.addBlueprint('nighty_type_n_vorsignal', {
 				type = "hybrid",
 				isAnimated = false,
 				preSignalTriggerKey = "nighty_type_n_signaltype",
 				preSignalTriggerValue = 1,
-			}
+			})
 
-			signals.signals['nighty_type_n_hauptsignal_bruecke'] = {
-				type = "main",
-				isAnimated = false
-			}
-
-			signals.signals['nighty_type_n_hauptsignal_bruecke_f1rnen'] = {
-				type = "main",
-				isAnimated = false
-			}
-
-			signals.signals['nighty_type_n_vorsignal_bruecke'] = {
+			betterSignals.addBlueprint('nighty_type_n_vorsignal_bruecke', {
 				type = "hybrid",
 				isAnimated = false,
 				preSignalTriggerKey = "nighty_type_n_signaltype",
 				preSignalTriggerValue = 1,
-			}
+			})
 
-			signals.signals['nighty_type_n_vorsignal_bruecke_f1rnen'] = {
+			betterSignals.addBlueprint('nighty_type_n_vorsignal_bruecke_f1rnen', {
 				type = "hybrid",
 				isAnimated = false,
 				preSignalTriggerKey = "nighty_type_n_signaltype",
 				preSignalTriggerValue = 1,
-			}
+			})
+
+			betterSignals.addBlueprint('nighty_type_n_hauptsignal_bruecke', {
+				type = "main",
+				isAnimated = false,
+			})
+
+			betterSignals.addBlueprint('nighty_type_n_hauptsignal_bruecke_f1rnen', {
+				type = "main",
+				isAnimated = false,
+			})
+
+			betterSignals.addBlueprint('nighty_type_n_pre_signal', {
+				type = "pre",
+				isAnimated = false,
+			})
+
 		end,
 		postRunFn = function ()
 			if pcall(function() api.res.constructionRep.get(api.res.constructionRep.find('asset/f1rnen_l_signalbruecke.con')) end) then

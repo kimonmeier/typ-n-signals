@@ -306,10 +306,10 @@ function builder.evaluateMainSignal(params)
 				canIndicateSpeed = false
 			end
 
-			if (params.previous_speed and ((math.floor((params.previous_speed)/10) == math.floor((indicatedSpeed+1)/10))) or not params.showSpeedChange) then
-				indicatesNextSpeed = false
-				canIndicateSpeed = false
-			end
+--			if (params.previous_speed and ((math.floor((params.previous_speed)/10) == math.floor((indicatedSpeed+1)/10))) or not params.showSpeedChange) then
+--				indicatesNextSpeed = false
+--				canIndicateSpeed = false
+--			end
 		end
 	else
 		indicatesNextSpeed = false

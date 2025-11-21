@@ -146,8 +146,6 @@ return {
 			{
 				type = "LESS",
 				faces = { { { .1, -.1, 0 }, { -.1, -.1, 0 }, { -.1, .1, 0 } , { .1, .1, 0 } } },
-				slopeLow = 0,
-				slopeHigh = 0,
 				optional = true,
 			},
 		}

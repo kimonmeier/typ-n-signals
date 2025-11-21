@@ -23,9 +23,9 @@ return {
 			wrapT = "REPEAT",
 		},
 		polygon_offset = {
-			factor = 0,
-			forceDepthWrite = false,
-			units = 0,
+			factor = 2.4000000953674,
+			forceDepthWrite = true,
+			units = 2.4000000953674,
 		},
 		two_sided = {
 			flipNormal = true,

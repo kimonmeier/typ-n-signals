@@ -1,0 +1,90 @@
+local builder = require "nightfury/signals/type_n_builder"
+local param_builder = require "nightfury/signals/type_n_param_builder"
+local utils = require "nightfury/signals/type_n_utils"
+function data()
+
+return { 
+	params = param_builder.main_signal_params(),
+	type = "ASSET_TRACK",
+	description = {
+		name = _("nighty_type_n_presignal_name"),			
+		description = _("nighty_type_n_presignal_desc"),
+	},
+	availability = {
+		yearFrom = 1986,
+	},
+	skipOnInit = true,
+	categories = { "nighty_typ_n", "better_signals" },
+	skipCollision = true,
+	autoRemovable = false,
+	order = 34340,
+	
+	updateFn = function(params)
+		local result = {}
+		result.models = {}
+
+		local addToTable = utils.addToTable
+
+
+		result.models[#result.models+1] = { id = "nighty/signals/typ-n_mast_basic.mdl", transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }}
+		result.models[#result.models+1] = { id = "nighty/signals/typ-n_schirm_rappi_pre.mdl", transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }}
+
+		if params.signal_state and params.signal_state == 1 then
+			result.models[#result.models+1] = { id = "nighty/signals/typ-n_base_green.mdl", transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }}
+		else 
+			result.models[#result.models+1] = { id = "nighty/signals/typ-n_base_red.mdl", transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }}
+		end
+		
+		
+		
+		result.cost = -1
+		result.maintenanceCost = result.cost / 6
+
+		result.terrainAlignmentLists = {
+			{
+				type = "LESS",
+				faces = { { { .1, -.1, 0 }, { -.1, -.1, 0 }, { -.1, .1, 0 } , { .1, .1, 0 } } },
+				optional = true,
+			},
+		}
+		
+		
+		result.groundFaces = {
+			{  
+				face = { { -1, -1, 0 }, { 1, -1, 0 }, { 1, 1, 0 } },
+				modes = {
+					{
+						type = "FILL",               
+						key = "industry_floor.lua"
+					}
+				},
+				loop = true,
+				alignmentOffsetMode = "OBJECT",
+				alignmentDirMode = "OBJECT",
+				alignmentOffset = { -2.0, -1.0 },
+
+			},
+		}
+
+		if params.better_signals_tunnel_helper and params.better_signals_tunnel_helper == 1 then
+			result.models[#result.models+1] = { id = "tunnel_helper_arrow.mdl", transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, z_offset, 1 }}
+
+			result.groundFaces[#result.groundFaces + 1] = {
+				face = { { -50, -50, 0 }, { 50, -50, 0 }, { 50, 50, 0 }, { -50, 50, 0 } },
+				modes = {
+					{
+						type = "FILL",               
+						key = "hole.lua"
+					}
+				},
+				loop = true,
+				alignmentOffsetMode = "OBJECT",
+				alignmentDirMode = "OBJECT",
+				alignmentOffset = { -2.0, -1.0 },
+			} 
+		end
+		
+		return result
+	end
+}
+end

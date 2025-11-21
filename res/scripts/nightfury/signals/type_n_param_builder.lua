@@ -16,7 +16,7 @@ local function util_params()
 			name = _("better_signals_y_offset"),
 			values = {_("better_signals_snap_left"), _("better_signals_snap_middle"), _("better_signals_snap_right")},
 			defaultIndex = 0,
-			tooltip = _("better_signals_x_offset_tooltip"),
+			tooltip = _("better_signals_y_offset_tooltip"),
 		},
 		{
 			key = "better_signals_tunnel_helper",
@@ -72,7 +72,7 @@ local function main_signs_params()
 			key = "nighty_type_n_occupied",
 			name = _("nighty_type_n_occupied"),
 			uiType = "ICON_BUTTON",
-			values = {"ui/parameters/nighty/none.tga", "ui/parameters/nighty/typ-n_speed_occupied.tga"},
+			values = {"ui/parameters/nighty/none.tga", "ui/parameters/nighty/typ-n_speed_occupied.tga", "ui/parameters/nighty/typ-n_speed_occupied.tga"},
 			defaultIndex = 0,
 			tooltip = _("nighty_type_n_occupied_tooltip"),
 		},
