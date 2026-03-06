@@ -445,4 +445,3 @@ function builder.buildGroundFaces(tunnelHelperOn)
 	return groundFaces, models
 end
 
-return builder
